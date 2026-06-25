@@ -1,0 +1,14 @@
+
+# environment variables
+.env
+.env.*
+.env
+.env.local
+.env.development
+.env.production
+
+# dependencies
+node_modules/
+
+# system files
+.DS_Store

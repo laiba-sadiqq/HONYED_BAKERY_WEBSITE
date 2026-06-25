@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Honeyed Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+       *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffb6c1 50%, #ffc0cb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background decorative elements */
+        .bg-decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .bg-decoration-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 150px;
+            color: #d45b66;
+            transform: rotate(-15deg);
+        }
+
+        .bg-decoration-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 120px;
+            color: #8b4a51;
+            transform: rotate(15deg);
+        }
+
+        h1, h2, h3, .logo span {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(139, 74, 81, 0.2);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            min-height: 580px;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #d45b66 0%, #8b4a51 100%);
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .welcome-text h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .feature i {
+            font-size: 22px;
+            margin-right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature span {
+            font-size: 15px;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 36px;
+            color: #8b4a51;
+        }
+
+        .logo h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            color: #8b4a51;
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b4a51;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: -10px;
+            margin-bottom: 25px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 25px;
+            background: rgba(255, 182, 193, 0.2);
+            border-radius: 15px;
+            padding: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 14px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            color: #8b4a51;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab.active {
+            color: white;
+            background: #d45b66;
+            box-shadow: 0 5px 15px rgba(212, 91, 102, 0.3);
+        }
+
+        .tab:hover:not(.active) {
+            background: rgba(255, 182, 193, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8b4a51;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            border-radius: 15px;
+            font-size: 16px;
+            font-family: 'Josefin Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(139, 74, 81, 0.05);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #d45b66;
+            box-shadow: 0 0 0 3px rgba(212, 91, 102, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: #cba0a5;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #8b4a51;
+            font-size: 22px;
+            transition: color 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .password-toggle:hover {
+            color: #d45b66;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(to right, #d45b66, #c44d5a);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Josefin Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+            box-shadow: 0 5px 20px rgba(212, 91, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 91, 102, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(30, 30);
+                opacity: 0;
+            }
+        }
+
+        .message {
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+            display: block;
+        }
+
+        .message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .back-link a {
+            color: #8b4a51;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 12px;
+        }
+
+        .back-link a:hover {
+            color: #d45b66;
+            background: rgba(255, 182, 193, 0.1);
+            transform: translateX(-5px);
+        }
+
+        #registerForm {
+            display: none;
+        }
+
+        .form-transition {
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 500px;
+            }
+            
+            .left-panel {
+                padding: 30px;
+            }
+            
+            .right-panel {
+                padding: 30px;
+            }
+            
+            .bg-decoration {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 20px;
+            }
+            
+            .left-panel, .right-panel {
+                padding: 25px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 36px;
+            }
+            
+            .welcome-text h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background decorations -->
+    <div class="bg-decoration bg-decoration-1">
+        <i class='bx bx-cookie'></i>
+    </div>
+    <div class="bg-decoration bg-decoration-2">
+        <i class='bx bxs-cake'></i>
+    </div>
+    
+    <div class="container">
+        <!-- Left Panel with Welcome Message -->
+        <div class="left-panel">
+            <div class="welcome-text">
+                <h1>Welcome Back!</h1>
+                <p>Sign in to your Honeyed Bakery account to explore our artisan collection, track your orders, and enjoy exclusive members-only discounts on our freshly baked goods.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class='bx bxs-offer'></i>
+                    <span>Exclusive member discounts</span>
+                </div>
+                <div class="feature">
+                    <i class='bx bxs-truck'></i>
+                    <span>Fast delivery tracking</span>
+                </div>
+                <div class="feature">
+                    <i class='bx bxs-star'></i>
+                    <span>Personalized recommendations</span>
+                </div>
+                <div class="feature">
+                    <i class='bx bxs-gift'></i>
+                    <span>Birthday surprises & rewards</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Panel with Login/Register Form -->
+        <div class="right-panel">
+            <div class="logo">
+                <i class='bx bx-cookie'></i>
+                <h1>Honeyed</h1>
+            </div>
+            <p class="subtitle">Artisan Bakery</p>
+
+            <div class="tabs">
+                <div class="tab active" onclick="showLogin()">Login</div>
+                <div class="tab" onclick="showRegister()">Register</div>
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)" class="form-transition">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <i class='bx bx-hide password-toggle' onclick="togglePassword('loginPassword', this)"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn" id="loginBtn">Login</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" onsubmit="handleRegister(event)" class="form-transition">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="registerPassword" placeholder="Create a password" required>
+                        <i class='bx bx-hide password-toggle' onclick="togglePassword('registerPassword', this)"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        <i class='bx bx-hide password-toggle' onclick="togglePassword('confirmPassword', this)"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn" id="registerBtn">Create Account</button>
+            </form>
+
+            <div class="back-link">
+                <a href="index.html"><i class='bx bx-arrow-back'></i> Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        function getApiBase() {
+            return window.APP_CONFIG?.getApiUrl?.() || 'http://localhost:4000';
+        }
+
+        function getRedirectTarget() {
+            const params = new URLSearchParams(window.location.search);
+            const redirect = params.get('redirect');
+            if (!redirect) {
+                return null;
+            }
+
+            if (redirect.startsWith('http://') || redirect.startsWith('https://')) {
+                return redirect;
+            }
+
+            return redirect.startsWith('/') ? redirect.slice(1) : redirect;
+        }
+
+        function storeSession(token, user) {
+            localStorage.setItem('token', token);
+            localStorage.setItem('authToken', token);
+            localStorage.setItem('user', JSON.stringify({
+                id: user.id,
+                _id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }));
+        }
+
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+            document.querySelectorAll('.tab')[0].classList.add('active');
+            document.querySelectorAll('.tab')[1].classList.remove('active');
+            hideMessage();
+            
+            // Add animation class
+            document.getElementById('loginForm').classList.add('form-transition');
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            document.querySelectorAll('.tab')[0].classList.remove('active');
+            document.querySelectorAll('.tab')[1].classList.add('active');
+            hideMessage();
+            
+            // Add animation class
+            document.getElementById('registerForm').classList.add('form-transition');
+        }
+
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bx-hide');
+                icon.classList.add('bx-show');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bx-show');
+                icon.classList.add('bx-hide');
+            }
+        }
+
+        function showMessage(text, type) {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = 'message ' + type;
+        }
+
+        function hideMessage() {
+            document.getElementById('message').className = 'message';
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            btn.disabled = true;
+            btn.textContent = 'Logging in...';
+
+            try {
+                const response = await fetch(`${getApiBase()}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: document.getElementById('loginEmail').value,
+                        password: document.getElementById('loginPassword').value
+                    })
+                });
+
+                const result = await response.json();
+
+                // ✅ FIXED: Check for result.token (not result.data.token)
+                if (result.success && result.token && result.user) {
+                    storeSession(result.token, result.user);
+                    
+                    showMessage('Login successful! Redirecting...', 'success');
+                    
+                    setTimeout(() => {
+                        const redirectTarget = getRedirectTarget();
+                        if (redirectTarget) {
+                            window.location.href = redirectTarget;
+                            return;
+                        }
+
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showMessage(result.message || 'Login failed', 'error');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showMessage('Connection error. Please try again.', 'error');
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Login';
+        }
+   
+        async function handleRegister(e) {
+            e.preventDefault();
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                showMessage('Passwords do not match', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('Password must be at least 6 characters', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('registerBtn');
+            btn.disabled = true;
+            btn.textContent = 'Creating Account...';
+
+            try {
+                const response = await fetch(`${getApiBase()}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('registerName').value,
+                        email: document.getElementById('registerEmail').value,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+
+                // ✅ FIXED: Check for result.token (not result.data.token)
+                if (result.success && result.user) {
+                    if (result.token) {
+                        storeSession(result.token, result.user);
+                        showMessage('Account created! Redirecting...', 'success');
+                        setTimeout(() => {
+                            window.location.href = getRedirectTarget() || 'index.html';
+                        }, 1000);
+                    } else if (result.user.isVerified) {
+                        showMessage(result.message || 'Account created! Please log in.', 'success');
+                        document.getElementById('registerForm').reset();
+                        setTimeout(() => showLogin(), 1500);
+                    } else {
+                        showMessage(result.message || 'Account created! Please check your email to verify your account.', 'success');
+                        document.getElementById('registerForm').reset();
+                        setTimeout(() => showLogin(), 2000);
+                    }
+                } else {
+                    showMessage(result.message || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                console.error('Register error:', error);
+                showMessage('Connection error. Please try again.', 'error');
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Create Account';
+        }
+
+        // Check if already logged in - REMOVED THE IMMEDIATE REDIRECT
+        window.onload = function() {
+            // DON'T automatically redirect when page loads
+            // Let users see the login form first
+            
+            // Optional: Clear any existing login data if you want to force fresh login
+            // localStorage.removeItem('token');
+            // localStorage.removeItem('user');
+            
+            // Show login form by default
+            showLogin();
+        };
+    </script>
+</body>
+</html>
