@@ -696,14 +696,10 @@
                         setTimeout(() => {
                             window.location.href = getRedirectTarget() || 'index.html';
                         }, 1000);
-                    } else if (result.user.isVerified) {
+                    } else {
                         showMessage(result.message || 'Account created! Please log in.', 'success');
                         document.getElementById('registerForm').reset();
                         setTimeout(() => showLogin(), 1500);
-                    } else {
-                        showMessage(result.message || 'Account created! Please check your email to verify your account.', 'success');
-                        document.getElementById('registerForm').reset();
-                        setTimeout(() => showLogin(), 2000);
                     }
                 } else {
                     showMessage(result.message || 'Registration failed', 'error');
