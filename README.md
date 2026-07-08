@@ -72,8 +72,6 @@ bash
 cd frontend
 npm start
 
-•	Backend runs on railway 
-•	Frontend runs on vercel  https://honyedbakery.vercel.app/
 
 PROJECT STRUCTURE
 BackendLumiaLuxe/
@@ -97,9 +95,3 @@ JWT-based authentication using Authorization header
 DEPENDENCIES
 Backend: Express, Mongoose, JWT, Multer
 Frontend: React 
-
-CONTRIBUTORS
-•	FA23-BSE-069 – Laiba sadiq
-•	FA23-BSE-162 – Rida Anjum
-Supervisor: Sir Rana Muhammad Ajmal
-"# HONYED_BAKERY_WEBSITE" 
