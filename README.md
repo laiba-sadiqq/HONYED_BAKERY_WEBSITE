@@ -35,12 +35,20 @@ Honeyed Bakery is a modern and responsive bakery website developed as part of my
 
 ## 📸 Screenshots
 
-<img width="947" height="420" alt="image" src="https://github.com/user-attachments/assets/71eb6aa1-f043-4aa1-ad6e-49fce13d90f9" />
 
-<img width="944" height="414" alt="image" src="https://github.com/user-attachments/assets/93217048-bda1-4f27-b775-403f597a256e" />
 
-<img width="931" height="418" alt="image" src="https://github.com/user-attachments/assets/3ccbd353-ad83-4799-acea-8e572d3499d8" />
+<img width="822" height="404" alt="image" src="https://github.com/user-attachments/assets/6d0a9250-fcb9-420a-955f-2b85099a5787" />
+<img width="952" height="443" alt="image" src="https://github.com/user-attachments/assets/38fcace0-f0e1-40f1-9922-14264cabff05" />
 
+
+<img width="836" height="435" alt="image" src="https://github.com/user-attachments/assets/2a4813f4-d310-4d03-879c-accf4678253c" />
+
+
+<img width="766" height="371" alt="image" src="https://github.com/user-attachments/assets/ba66ae56-904b-45bc-85c5-57e07362cbbf" />
+<img width="439" height="311" alt="image" src="https://github.com/user-attachments/assets/6b6992d9-4f21-470b-8a42-d668b2ca91c8" />
+
+
+<img width="836" height="435" alt="image" src="https://github.com/user-attachments/assets/2a4813f4-d310-4d03-879c-accf4678253c" />
 
 ---
 
