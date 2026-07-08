@@ -54,7 +54,7 @@ Honeyed Bakery is a modern and responsive bakery website developed as part of my
 
 ## 🌐 Live Demo
 
-🔗 Add your deployed Vercel link here.
+(https://code-alpha-honyed-bakery-ruddy.vercel.app/index.html)
 
 ---
 
