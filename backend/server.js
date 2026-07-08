@@ -9,6 +9,16 @@ const { errorHandler } = require('./middleware/errorHandler');
 // Load env vars
 dotenv.config();
 
+const dns = require("dns");
+
+dns.setDefaultResultOrder("ipv4first");
+dns.setServers([
+  "1.1.1.1",
+  "1.0.0.1",
+  "8.8.8.8",
+  "  8.8.4.4"
+]);
+
 const DEBUG = process.env.NODE_ENV !== 'production';
 const log = (...args) => { if (DEBUG) console.log(...args); };
 
@@ -82,11 +92,10 @@ const fallbackMongoUri = 'mongodb://127.0.0.1:27017/ecommerce';
 
 async function connectToDatabase() {
   const connectOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 10000,
-    socketTimeoutMS: 45000,
-  };
+  serverSelectionTimeoutMS: 10000,
+  socketTimeoutMS: 45000,
+  family: 4
+};
 
   try {
     await mongoose.connect(primaryMongoUri || fallbackMongoUri, connectOptions);
