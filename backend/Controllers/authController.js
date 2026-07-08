@@ -24,16 +24,15 @@ exports.register = async (req, res) => {
     const emailVerificationExpire = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
     // Create user - auto-verify in development mode
-    const isProduction = process.env.NODE_ENV === 'production';
+   const isProduction = false;
     const user = await User.create({
-      name,
-      email,
-      password,
-      isVerified: !isProduction, // Auto-verify in development, require verification in production
-      emailVerificationToken: isProduction ? crypto.createHash('sha256').update(emailVerificationToken).digest('hex') : undefined,
-      emailVerificationExpire: isProduction ? emailVerificationExpire : undefined
-    });
-
+  name,
+  email,
+  password,
+  isVerified: true,
+  emailVerificationToken: undefined,
+  emailVerificationExpire: undefined
+});
     // Send verification email only in production
     if (isProduction) {
       const verificationLink = `${process.env.FRONTEND_URL || 'https://honyedbakery.vercel.app'}/verify-email.html?token=${emailVerificationToken}`;
