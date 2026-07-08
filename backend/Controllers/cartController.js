@@ -48,7 +48,7 @@ exports.getCart = async (req, res) => {
           _id: item.product?._id,
           name: item.product?.name,
           price: item.product?.price,
-          image: item.product?.images?.[0]
+          image: item.product?.images?.[0]?.url || ''
         },
         productId: item.product?._id,
         quantity: item.quantity,
@@ -156,7 +156,7 @@ exports.addToCart = async (req, res) => {
           _id: item.product?._id,
           name: item.product?.name,
           price: item.product?.price,
-          image: item.product?.images?.[0]
+          image: item.product?.images?.[0]?.url || ''
         },
         productId: item.product?._id,
         quantity: item.quantity,
@@ -270,7 +270,7 @@ exports.updateCartItem = async (req, res) => {
           _id: item.product?._id,
           name: item.product?.name,
           price: item.product?.price,
-          image: item.product?.images?.[0]
+          image: item.product?.images?.[0]?.url || ''
         },
         productId: item.product?._id,
         quantity: item.quantity,
@@ -352,7 +352,7 @@ exports.removeFromCart = async (req, res) => {
           _id: item.product?._id,
           name: item.product?.name,
           price: item.product?.price,
-          image: item.product?.images?.[0]
+          image: item.product?.images?.[0]?.url || ''
         },
         productId: item.product?._id,
         quantity: item.quantity,
@@ -562,7 +562,7 @@ exports.syncCart = async (req, res) => {
           _id: item.product?._id,
           name: item.product?.name,
           price: item.product?.price,
-          image: item.product?.images?.[0]
+          image: item.product?.images?.[0]?.url || ''
         },
         productId: item.product?._id,
         quantity: item.quantity,

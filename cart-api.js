@@ -228,8 +228,8 @@ class CartAPI {
     }
   }
 
-  async addToCart(productId, quantity = 1, productName = null) {
-    this.log('➕ Adding to cart:', { productId, quantity });
+  async addToCart(productId, quantity = 1, productName = null, price = 0, image = '') {
+    this.log('➕ Adding to cart:', { productId, quantity, price });
     
     // Send loading event
     this.emitLoading(productId, true);
@@ -250,8 +250,8 @@ class CartAPI {
       // Get current cart first
       const currentCart = this.cache.cart || await this.getCart();
       
-      // Create optimistic update
-      const optimisticCart = this.createOptimisticCart(currentCart, productId, quantity, productName);
+      // Create optimistic update with real price and image
+      const optimisticCart = this.createOptimisticCart(currentCart, productId, quantity, productName, price, image);
       
       // Update cache immediately
       this.cache.cart = optimisticCart;
@@ -524,7 +524,7 @@ async syncCartWithBackend(frontendCart) {
 
   // ===== HELPER METHODS =====
 
-  createOptimisticCart(currentCart, productId, quantity, productName) {
+  createOptimisticCart(currentCart, productId, quantity, productName, price = 0, image = '') {
     const optimisticCart = JSON.parse(JSON.stringify(currentCart));
     
     // Check if product already in cart
@@ -539,18 +539,18 @@ async syncCartWithBackend(frontendCart) {
         existingItem.itemTotal = existingItem.price * existingItem.quantity;
       }
     } else {
-      // Add new item
+      // Add new item with real price and image from the product card
       optimisticCart.items.push({
         _id: `temp_${Date.now()}`,
         product: {
           _id: productId,
           name: productName || 'Product',
-          image: 'https://via.placeholder.com/45x45?text=Product'
+          image: image || ''
         },
         productId: productId,
         quantity: quantity,
-        price: 0,
-        itemTotal: 0
+        price: price,
+        itemTotal: price * quantity
       });
     }
     
@@ -566,23 +566,25 @@ async syncCartWithBackend(frontendCart) {
 
   normalizeCart(cartData) {
     const resolveImageUrl = (imageValue) => {
-      if (!imageValue) {
-        return 'https://via.placeholder.com/45x45?text=Product';
+      if (!imageValue) return '';
+
+      // Already a plain string URL
+      if (typeof imageValue === 'string') return imageValue;
+
+      // Object with url property (e.g. {url: '...', alt: '...'})
+      if (typeof imageValue === 'object' && !Array.isArray(imageValue)) {
+        return imageValue.url || imageValue.src || '';
       }
 
-      if (typeof imageValue === 'string') {
-        return imageValue;
-      }
-
+      // Array of image objects or strings
       if (Array.isArray(imageValue)) {
-        const firstImage = imageValue[0];
-        if (typeof firstImage === 'string') {
-          return firstImage;
-        }
-        return firstImage?.url || 'https://via.placeholder.com/45x45?text=Product';
+        const first = imageValue[0];
+        if (!first) return '';
+        if (typeof first === 'string') return first;
+        return first.url || first.src || '';
       }
 
-      return imageValue.url || imageValue.src || 'https://via.placeholder.com/45x45?text=Product';
+      return '';
     };
 
     // Ensure cart has required properties

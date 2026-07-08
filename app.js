@@ -436,7 +436,9 @@ const wishlistManager = {
                         <button class="add-to-cart-from-wishlist bg-pink-500 text-white p-2 rounded-full hover:scale-105 transition-all" 
                                data-product-id="${product.id}" 
                                 data-product-name="${product.name}"
-                                title="Add to Cart">
+                                data-product-price="${product.price}"
+                                data-product-image="${product.image}"
+                               title="Add to Cart">
                             <i class='bx bx-plus text-lg'></i>
                         </button>
                         <button class="remove-from-wishlist text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-full transition-all" 
@@ -469,6 +471,8 @@ const wishlistManager = {
                 e.stopPropagation();
                 const productId = button.getAttribute('data-product-id');
                 const productName = button.getAttribute('data-product-name');
+                const price = parseFloat(button.getAttribute('data-product-price')) || 0;
+                const image = button.getAttribute('data-product-image') || '';
                 
                 if (!window.cartAPI?.isAuthenticated()) {
                     const proceed = confirm('Please login to add items to cart. Login now?');
@@ -478,7 +482,7 @@ const wishlistManager = {
                     return;
                 }
                 
-                await cartManager.addToCart(productId, productName, 1);
+                await cartManager.addToCart(productId, productName, 1, price, image);
             });
         });
     }
@@ -548,7 +552,7 @@ const cartManager = {
     },
 
    // In app.js, update the addToCart function in cartManager:
-async addToCart(productId, productName, quantity = 1) {
+async addToCart(productId, productName, quantity = 1, price = 0, image = '') {
     log('🚀 INSTANT add to cart:', { productId, productName });
     
     // Check if cartAPI exists
@@ -583,7 +587,7 @@ async addToCart(productId, productName, quantity = 1) {
     try {
         // Call cartAPI (which has optimistic updates)
         log('📤 Calling cartAPI.addToCart...');
-        const result = await window.cartAPI.addToCart(productId, quantity, productName);
+        const result = await window.cartAPI.addToCart(productId, quantity, productName, price, image);
         
         clearTimeout(safetyTimeout);
         
@@ -975,7 +979,9 @@ const modalManager = {
             await cartManager.addToCart(
                 currentProductData.productId || currentProductData.id, 
                 currentProductData.name, 
-                quantity
+                quantity,
+                currentProductData.price,
+                currentProductData.image
             );
             this.closeModal();
         }
@@ -1144,7 +1150,7 @@ const productCardsManager = {
                 addToCartBtn.classList.add('pulse');
                 setTimeout(() => addToCartBtn.classList.remove('pulse'), 500);
                 
-                await cartManager.addToCart(productData.productId || productData.id, productData.name, 1);
+                await cartManager.addToCart(productData.productId || productData.id, productData.name, 1, productData.price, productData.image);
             });
             
             const wishlistBtn = card.querySelector('.wishlist-btn');
