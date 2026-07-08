@@ -25,7 +25,9 @@ exports.register = async (req, res) => {
 
     // Create user - auto-verify in development mode
    const isProduction = false;
-    const user = await User.create({
+console.log("=== NEW REGISTER CODE IS RUNNING ===");
+
+const user = await User.create({
   name,
   email,
   password,
@@ -33,6 +35,8 @@ exports.register = async (req, res) => {
   emailVerificationToken: undefined,
   emailVerificationExpire: undefined
 });
+
+console.log("User created:", user.email, "Verified:", user.isVerified);
     // Send verification email only in production
     if (isProduction) {
       const verificationLink = `${process.env.FRONTEND_URL || 'https://honyedbakery.vercel.app'}/verify-email.html?token=${emailVerificationToken}`;
