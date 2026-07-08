@@ -833,29 +833,26 @@ async addToCart(productId, productName, quantity = 1) {
 
     setupCheckout() {
         elements.checkoutBtn?.addEventListener('click', async () => {
-            // First, refresh cart to ensure we have latest data
-            await this.loadCart();
-            
             if (!window.cartAPI?.isAuthenticated()) {
                 const proceed = confirm('You need to login to checkout. Would you like to login now?');
                 if (proceed) {
-                    window.location.href = `login.html?redirect=${encodeURIComponent('/checkout.html')}`;
+                    window.location.href = `login.html?redirect=${encodeURIComponent('checkout.html')}`;
                 }
                 return;
             }
             
-            // Check if cart is empty
-            const cart = await window.cartAPI.getCart(true); // Force refresh
+            // Check if cart is empty using cached cart (no double fetch)
+            const cart = window.cartAPI.cache?.cart || await window.cartAPI.getCart();
             if (!cart || cart.itemCount === 0) {
                 utils.showToast('Your cart is empty! Add items to checkout.', 'error');
                 return;
             }
             
-            // Save cart data to localStorage for checkout page
-            localStorage.setItem('checkoutCart', JSON.stringify(cart));
+            // Save cart to localStorage so checkout page can read it instantly
+            localStorage.setItem('honeyed-cart', JSON.stringify(cart));
             
-            // Redirect to checkout
-            window.location.href = '/checkout.html';
+            // Redirect to checkout (no leading slash — works on Vercel)
+            window.location.href = 'checkout.html';
         });
     }
 };

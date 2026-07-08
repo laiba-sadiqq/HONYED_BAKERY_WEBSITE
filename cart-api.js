@@ -490,19 +490,13 @@ async syncCartWithBackend(frontendCart) {
     }
     
     try {
-      // First, sync cart to ensure backend has latest data
-      const currentCart = this.cache.cart || await this.getCart();
-      if (currentCart && currentCart.items.length > 0) {
-        this.log('🔄 Syncing cart before order...');
-        await this.syncCartWithBackend(currentCart);
-      }
-      
-      // Now create order
+      // Create order directly — DO NOT sync/clear cart here.
+      // The checkout page sends cart items in the order body already.
       const result = await this.request('/api/orders', 'POST', orderData);
       
       this.log('✅ Order response:', result);
       
-      // If order successful, clear cart
+      // Only clear cart AFTER a confirmed successful order
       if (result.success === true || result.success === 'true') {
         await this.clearCart();
       }
