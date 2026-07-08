@@ -24,9 +24,12 @@ exports.register = async (req, res) => {
       password
     });
 
+    const token = generateToken(user._id, user.role);
+
     res.status(201).json({
       success: true,
-      message: 'Account created successfully! You can now login.',
+      token,
+      message: 'Account created successfully!',
       user: {
         id: user._id,
         name: user.name,

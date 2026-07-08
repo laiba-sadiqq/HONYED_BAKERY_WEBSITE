@@ -36,6 +36,7 @@ app.use(cors({
     
     const allowedOrigins = [
       'https://honyedbakery.vercel.app',
+      'https://code-alpha-honyed-bakery-ruddy.vercel.app',
       'http://localhost:5500',
       'http://127.0.0.1:5500',
       'http://localhost:3000',
