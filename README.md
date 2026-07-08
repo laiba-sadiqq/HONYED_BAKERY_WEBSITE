@@ -1,105 +1,98 @@
-HONYED BAKERY
-A full-stack e-commerce application for artisanal baked goods with a warm, inviting UI and robust backend functionality.
+# 🍯 Honeyed Bakery
 
-FEATURES
+Honeyed Bakery is a modern and responsive bakery website developed as part of my **Full Stack Development Internship at CodeAlpha**. The website showcases a premium bakery experience through an elegant user interface, smooth navigation, and visually appealing design.
 
-Frontend (React)
-- Modern, responsive UI with React
-- Product catalog with categories
-- Shopping cart functionality
-- User authentication
-- Order management
-- Admin dashboard
+---
 
-Backend (Node.js + Express)
-- RESTful API architecture
-- MongoDB database with Mongoose
-- User authentication with JWT
-- Product management
-- Order processing
-- Payment integration  
-- File upload capabilities
+## 🚀 Features
 
-QUICK START
+- 🏠 Modern Landing Page
+- 🍰 Product Showcase
+- 👩‍🍳 About Us Section
+- ⭐ Customer Testimonials
+- 📞 Contact Section
+- 📱 Fully Responsive Design
+- 🎨 Clean & Elegant User Interface
+- ⚡ Smooth Navigation
 
-Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (local or Atlas)
-- npm 
-Installation
-1. Clone the repository
-2. Install backend dependencies
-3. Configure environment variables
-4. Install frontend dependencies
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Tailwind CSS
+
+### Tools
+- Visual Studio Code
+- Git
+- GitHub
+- Vercel
+
+---
+
+## 📸 Screenshots
 
 
 
-Installation
-1.	Clone the repository
-bash
-git clone <repository-url>
-cd honyed-bakery
+---
 
-2.	Install backend dependencies
-bash
-cd backend
+## 🌐 Live Demo
+
+🔗 Add your deployed Vercel link here.
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/Honeyed-Bakery.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd Honeyed-Bakery
+```
+
+Install dependencies:
+
+```bash
 npm install
-npm install express mongoose dotenv cors bcryptjs jsonwebtoken multer
+```
 
-3.	Configure environment variables Create a .env file in the backend directory:
+Run the development server:
 
-.env
-PORT=4000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-NODE_ENV=development
+```bash
+npm run dev
+```
 
-The backend also accepts `MONGO_URI` for compatibility with older env files.
+---
 
-4.	Install frontend dependencies
-bash
-cd ../frontend
-npm install
+## 🎯 Learning Outcomes
 
-Backend Setup
-bash
-cd backend
-node server.js
+Through this project, I gained practical experience in:
 
-Frontend Setup
+- Responsive Web Design
+- Tailwind CSS
+- Modern UI/UX Principles
+- Component-Based Frontend Development
+- Website Deployment using Vercel
+- Version Control with Git & GitHub
 
-bash
-cd frontend
-npm start
+---
 
-•	Backend runs on railway 
-•	Frontend runs on vercel  https://honyedbakery.vercel.app/
+## 🙏 Acknowledgement
 
-PROJECT STRUCTURE
-BackendLumiaLuxe/
-- server.js
-- models
-- controllers
-- routes
-- middleware
-- utils
-- public/uploads
+This project was developed during my **Full Stack Development Internship** at **CodeAlpha**. It provided me with valuable hands-on experience in frontend development, responsive web design, and creating visually engaging user interfaces.
 
-API ENDPOINTS
-Authentication, Products, Orders, Categories, users 
+---
 
-DATABASE MODELS
-User, Product, Order, Category
+## 👩‍💻 Author
 
-AUTHENTICATION
-JWT-based authentication using Authorization header
 
-DEPENDENCIES
-Backend: Express, Mongoose, JWT, Multer
-Frontend: React 
-
-CONTRIBUTORS
-•	FA23-BSE-069 – Laiba sadiq
-•	FA23-BSE-162 – Rida Anjum
-Supervisor: Sir Rana Muhammad Ajmal
-"# HONYED_BAKERY_WEBSITE" 
+⭐ If you like this project, consider giving it a star!
