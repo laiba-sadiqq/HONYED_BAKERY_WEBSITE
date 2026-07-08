@@ -1,7 +1,7 @@
 // config.js - SIMPLE VERSION
 const APP_CONFIG = {
   // Production backend WITHOUT /api
-  API_BASE_URL: 'https://honyedbakery-production-8dd9.up.railway.app',
+  API_BASE_URL: 'https://honyedbakerywebsite-production.up.railway.app',
   
   // Local development
   API_BASE_URL_LOCAL: 'http://localhost:4000',
